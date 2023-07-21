@@ -1,0 +1,76 @@
+﻿@model RestaurantApplication.Models.Reservation.Create
+@{
+    ViewData["Title"] = "Create";
+}
+
+@section Shashin1{
+    <section class="module bg-dark-30" style='background-image: url("/lib/assets/images/section-4.jpg");'>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-3">
+                    <h2 class="module-title font-alt mb-0">Reservation</h2>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+
+<section class="module-small">
+    <h1 class="font-alt"> Booking Form</h1>
+    <div style="background-color: lightgrey; padding:5px; margin:5px">
+        <h2 class="font-alt">Sitting: @Model.Sitting</h2>
+        <hr />
+        <div style="border: 1px dotted black; padding:5px; margin:5px">
+            <form asp-controller="Reservation" asp-action="Create" method="post">
+                <div asp-validation-summary="All"></div>
+                <h4>Reservation details:</h4>
+                <div class="form-group">
+                </div>
+                <label asp-for="Guests"></label>
+                <input asp-for="Guests" class="form-control" /><br />
+
+                <label asp-for="StartTime"></label>
+                <input asp-for="StartTime" class="form-control" min="@Model.DateTimeRange1.ToString("yyyy-MM-ddTHH:mm")" max="@Model.DateTimeRange2.ToString("yyyy-MM-ddTHH:mm")" />
+
+                <label asp-for="Duration"></label>
+                <select asp-for="Duration" class="form-control">
+                    <option value="30">30 mins</option>
+                    <option value="45">45 mins</option>
+                    <option value="60" default>60 mins</option>
+                    <option value="75">1 hr 15 mins</option>
+                    <option value="90">1 hr 30 mins</option>
+                    <option value="105">1 hr 45 mins</option>
+                    <option value="120">2 hrs</option>
+                </select>
+
+                <label asp-for="Notes"> </label>
+                <textarea asp-for="Notes" class="form-control"></textarea>
+
+                <label asp-for="ReservationSourceId"></label>
+                <select asp-for="ReservationSourceId" asp-items="Model.ReservationSources" class="form-control">
+                    <option value="">-- select source --</option>
+                </select>
+
+                <hr />
+                <h4>Person details:</h4>
+                <label asp-for="FirstName"></label>
+                <input asp-for="FirstName" class="form-control">
+
+                <label asp-for="LastName"></label>
+                <input asp-for="LastName" class="form-control">
+
+                <label asp-for="Email"></label>
+                <input asp-for="Email" class="form-control" value="@Model.Email" />
+
+
+                <label asp-for="PhoneNumber"></label>
+                <input asp-for="PhoneNumber" class="form-control">
+
+                <input type="hidden" asp-for="SittingId" />
+                <input type="hidden" asp-for="Sitting" />
+                <br />
+                <button class="btn btn-b btn-round btn-md" id="rfsubmit" type="submit"><i class="fa fa-paper-plane-o"></i> Sumbit</button>
+            </form>
+        </div>
+    </div>
+</section>

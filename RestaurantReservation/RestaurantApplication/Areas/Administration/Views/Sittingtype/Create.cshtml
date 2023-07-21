@@ -1,0 +1,27 @@
+﻿@model SittingType
+@{
+    ViewData["Title"] = "Create";
+}
+
+<section style="margin-top: 100px" class="module pt-0 pb-0">
+    <div class="row position-relative m-0">
+        <div class="row">
+            <div class="col-sm-12">
+                <h2 class="module-title font-alt align-left">Sitting List</h2>
+                <p class="module-subtitle font-serif align-left">Bean Scean Administation Board</p>
+            </div>
+        </div>
+    </div>
+</section>
+<section style="margin-bottom: 370px" class="module pt-0 pb-0">
+    <div style="border: 1px solid black; padding:15px; margin:5px">
+        <form asp-area="administration" asp-controller="Sittingtype" asp-action="Create">
+            <div class="form-group">
+                <label>Sitting Type Name</label>
+                <input asp-for="Name" />
+                <span class="text-danger"></span>
+            </div>
+            <input type="submit" value="Save" />
+        </form>
+    </div>
+</section>

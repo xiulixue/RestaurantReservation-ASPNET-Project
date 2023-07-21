@@ -1,0 +1,55 @@
+﻿@model Reservation
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="row position-relative m-0">
+    <div class="row">
+        <div class="col-sm-12">
+            <h2 class="module-title font-alt align-left mb-30">Reservation Details</h2>
+            <div class="btn-list" style="display: flex;">
+                <div>
+                    <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-circle btn-danger">Delete</a> |
+                </div>
+                <div>
+                    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-circle btn-primary">Edit</a> |
+                </div>
+                <div>
+                    <a asp-action="Assign" asp-route-id="@Model.Id" class="btn btn-circle btn-primary">Assign Table</a> |
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<hr class="divider-w mt-10 mb-20">
+
+<div class="row">
+    <div class="col-md-6 p-5 mb-30">
+        <h3>Reservation details:</h3>
+        <p>Sitting Type: @Model.Sitting.SittingType.Name </p>
+        <p>Number of guest: @Model.Guests </p>
+        <p>Date: @Model.StartTime.ToString("dd/MM/yyyy/")</p>
+        <p>Start Time: @Model.StartTime.ToString("hh:mm tt")</p>
+        <p>Duration: @Model.Duration mins</p>
+        <p>Notes: @Model.Notes</p>
+        <p>Status: @Model.Status.Name</p>
+        <p>Source: @Model.Source.Name</p>
+        <p>
+            Assigned Tables:
+            <ul>
+                @foreach (var t in Model.ReservedTables)
+                {
+                    <li>@t.Tables.Number</li>
+                }
+            </ul>
+            @*No assign table now. <a asp-action="Assign" asp-route-id="@Model.Id">Assign Table</a>*@
+        </p>
+    </div>
+    <div class="col-md-6 p-5 mb-30">
+        <h3>Customer details:</h3>
+        <p>First Name: @Model.Person.FirstName </p>
+        <p>Last Name: @Model.Person.LastName </p>
+        <p>Email: @Model.Person.Email </p>
+        <p>Phone Number: @Model.Person.PhoneNumber </p>
+    </div>
+</div>

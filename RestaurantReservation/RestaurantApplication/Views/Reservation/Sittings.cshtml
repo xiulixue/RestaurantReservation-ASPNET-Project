@@ -1,0 +1,80 @@
+﻿@model RestaurantApplication.Models.Reservation.SelectSittingVM
+@{
+    ViewData["Title"] = "Sittings";
+}
+
+@section Shashin{
+    <section class="module bg-dark-30" style='background-image: url("/lib/assets/images/restaurant/corn.jpg");'>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-3">
+                    <h2 class="module-title font-alt mb-0">Guest Reservation</h2>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+<section style="margin-top: 100px; margin-bottom: 100px;" class="module pt-0 pb-0">
+    <div class="row position-relative m-0">
+        <div class="row">
+            <div class="col-sm-12">
+                <h2 class="module-title font-alt align-left">Reserve a Table</h2>
+                <p class="module-subtitle font-serif align-left">Hope you can enjoy the time in our resteraunt</p>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="row position-relative m-0">
+            <div class="col-xs-12 col-md-12">
+                <label asp-for="selectDate">Select a date:</label>
+                <div class="input-group">
+                    <div class="input-group-addon"><i class="icon-calendar"></i></div>
+                    <input asp-for="selectDate"
+                           id="datetime"
+                           name="datetime"
+                           type="date"
+                           placeholder="dd/mm/yyyy"
+                           value=""
+                           min="@DateTime.Now.ToString("yyyy-MM-dd")"
+                           class="form-control" />
+                </div>
+            </div>
+        </div>
+
+        <form asp-controller="Reservation" asp-action="Sittings" method="post">
+            <div class="form-group">
+                <div class="row position-relative m-0">
+                    <div class="col-xs-12 col-md-12">
+                        <label>Select a service:</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="icon-profile-male"></i></div>
+                            <select id="sitting-options" asp-for="selectSittingId" class="form-control" required></select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row position-relative m-0">
+                    <div class="col-xs-12 col-md-12">
+                        <button class="btn btn-g btn-round btn-block btn-lg mt-20" id="rfsubmit" type="submit"><i class="fa fa-paper-plane-o"></i> Reserve</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+
+@section Scripts{
+    <script src="~/js/selectsitting.js"></script>
+    <script>
+        function validateForm() {
+            var selectedSitting = document.getElementById("sitting-options").value;
+            if (selectedSitting === "") {
+                alert("Please select a sitting.");
+                return false; // Prevent form submission
+            }
+            return true; // Allow form submission
+        }
+    </script>
+}
+

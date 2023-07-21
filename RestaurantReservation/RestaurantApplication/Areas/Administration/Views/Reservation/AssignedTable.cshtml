@@ -1,0 +1,19 @@
+﻿@model Reservation
+@{
+    ViewData["Title"] = "AssignedTable";
+}
+
+<h1><a href="~/Administration/Reservation/Main/">Reservation</a> - AssignedTable</h1>
+<div style="background-color: lightgrey; margin:5px; padding:15px">
+
+    <h2> Table Assigned Successfully! </h2>
+
+    <ul>
+        @foreach (var t in Model.ReservedTables)
+        {
+            <li>@t.Tables.Number</li>
+        }
+    </ul>
+
+</div>
+

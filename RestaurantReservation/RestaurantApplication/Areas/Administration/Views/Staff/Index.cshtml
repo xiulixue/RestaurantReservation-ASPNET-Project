@@ -1,0 +1,43 @@
+﻿@using Microsoft.AspNetCore.Identity;
+@using RestaurantApplication.Areas.Administration
+@using RestaurantApplication.Models.Staff;
+@model IEnumerable<UserRolesVM>;
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="row position-relative m-0">
+    <div class="row">
+        <div class="col-sm-12">
+            <h2 class="module-title font-alt align-left mb-30">Staff Management</h2>
+            <a href="~/Administration/Staff/Create" class="btn btn-circle btn-primary">Create New User</a>
+        </div>
+    </div>
+</div>
+<hr class="divider-w mt-10 mb-20">
+<div class="row">
+    <table class="table">
+        <thead class="text-left">
+            <tr>
+                <th scope="col">UserName</th>
+                <th scope="col">Email</th>
+                <th scope="col">Role</th>
+                <th scope="col">Edit</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var s in Model)
+            {
+                <tr>
+                    <td scope="row">@s.Username</td>
+                    <td>@s.Email</td>
+                    <td>@s.Role</td>
+                    <td>
+                        <a asp-controller="Staff" asp-action="Edit" asp-route-id="@s.UserId">Edit</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

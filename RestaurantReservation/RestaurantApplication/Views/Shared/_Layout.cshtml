@@ -1,0 +1,157 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>@ViewData["Title"] - Bean Scene Restaurant</title>
+
+    <link href="~/lib/assets/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Volkhov:400i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+    <link href="~/lib/assets/lib/animate.css/animate.css" rel="stylesheet">
+    <link href="~/lib/assets/lib/components-font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="~/lib/assets/lib/et-line-font/et-line-font.css" rel="stylesheet">
+    <link href="~/lib/assets/lib/flexslider/flexslider.css" rel="stylesheet">
+    <link href="~/lib/assets/lib/owl.carousel/dist/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="~/lib/assets/lib/owl.carousel/dist/assets/owl.theme.default.min.css" rel="stylesheet">
+    <link href="~/lib/assets/lib/magnific-popup/dist/magnific-popup.css" rel="stylesheet">
+    <link href="~/lib/assets/lib/simple-text-rotator/simpletextrotator.css" rel="stylesheet">
+
+    <link href="~/lib/assets/css/style.css" rel="stylesheet">
+    <link id="color-scheme" href="~/lib/assets/css/colors/default.css" rel="stylesheet">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="~/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="~/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="~/favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="~/favicon_io/site.webmanifest">
+</head>
+
+<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#custom-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <li class="nav-item">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Bean Scene</a>
+            </li>
+        </div>
+
+        <div class="collapse navbar-collapse" id="custom-collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="nav-item">
+                    <a class="nav-link text-white" asp-area="" asp-controller="Reservation" asp-action="Sittings" class="display-6">Make Reservation</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="" asp-controller="Reservation" asp-action="Menu">Menu</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="" asp-controller="Reservation" asp-action="Restaurant">Restaurant</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Contact">Contact</a>
+                </li>
+
+                @if (User.IsInRole("Member"))
+                {
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="Membership" asp-controller="Home" asp-action="Index">MY ACCOUNT</a>
+                    </li>
+                }
+                @if (User.IsInRole("Manager") || User.IsInRole("Staff"))
+                {
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="Administration" asp-controller="Home" asp-action="Index">Admin</a>
+                    </li>
+                }
+                <li class="nav-item">
+                    <partial name="_LoginPartial" />
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<main role="main" class="pb-3">
+    @RenderSection("Shashin1",required:false)
+    @RenderSection("Shashin",required:false)
+    @RenderSection("Loginshashin", required:false)
+    @RenderSection("NewRestaurant", required:false)
+    @RenderSection("Menu", required:false)
+    @RenderSection("Contact", required:false)
+    <div class="scroll-down"><a href="#tofooter"><i class="fa fa-angle-double-down"></i></a></div>
+    <div class="container">
+        @RenderBody()
+    </div>
+</main>
+
+<footer class="footer bg-dark ">
+    <div class="module-extra-small bg-dark">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="widget">
+                        <h5 class="widget-title font-alt">About BeanScene</h5>
+                        <p>Phone: +1 123 456 789
+                        <p>Email:<a href="#">info@beanscene.com</a></p>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="widget">
+                        <h5 class="widget-title font-alt">About DevTeam</h5>
+                        <ul class="icon-list">
+                            <li>
+                                Jianna Huang on
+                                <a href="mailto: lalamiffy2@gmail.com"><i class="fa fa-envelope"></i></a>
+                                <a href="https://www.linkedin.com/mwlite/in/jianna-huang-517175251"><i class="fa fa-linkedin-square"></i></a>
+                                <a href="heeps://github.com/lalamiffy"><i class="fa fa-github"></i></a>
+                            </li>
+                            <li>
+                                Shiho Makino on
+                                <a href="mailto: shihomakino511@gmail.com"><i class="fa fa-envelope"></i></a>
+                                <a href="https://www.facebook.com/profile.php?id=100009605768167&mibextid=LQQJ4d"><i class="fa fa-facebook"></i></a>
+                            </li>
+                            <li>
+                                Xiuli Xue on
+                                <a href="mailto: xuemurphy@gmail.com"><i class="fa fa-envelope"></i></a>
+                                <a href="https://www.linkedin.com/in/xiuli-xue"><i class="fa fa-linkedin-square"></i></a>
+                                <a href="https://github.com/xiulixue"><i class="fa fa-github"></i></a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr class="divider-d">
+    <div class="container">
+        &copy; 2023 - BeanScene V1.0 - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    </div>
+</footer>
+<div class="scroll-up"><a href="#totop"><i class="fa fa-angle-double-up"></i></a></div>
+
+<script src="~/lib/assets/lib/jquery/dist/jquery.js"></script>
+<script src="~/lib/assets/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="~/lib/assets/lib/wow/dist/wow.js"></script>
+<script src="~/lib/assets/lib/jquery.mb.ytplayer/dist/jquery.mb.YTPlayer.js"></script>
+<script src="~/lib/assets/lib/isotope/dist/isotope.pkgd.js"></script>
+<script src="~/lib/assets/lib/imagesloaded/imagesloaded.pkgd.js"></script>
+<script src="~/lib/assets/lib/flexslider/jquery.flexslider.js"></script>
+<script src="~/lib/assets/lib/owl.carousel/dist/owl.carousel.min.js"></script>
+<script src="~/lib/assets/lib/smoothscroll.js"></script>
+<script src="~/lib/assets/lib/magnific-popup/dist/jquery.magnific-popup.js"></script>
+<script src="~/lib/assets/lib/simple-text-rotator/jquery.simple-text-rotator.min.js"></script>
+<script src="~/lib/assets/js/plugins.js"></script>
+<script src="~/lib/assets/js/main.js"></script>
+
+@await RenderSectionAsync("Scripts", required: false)
+</html>
+
+
+

@@ -1,0 +1,46 @@
+﻿@page
+@model RegisterConfirmationModel
+@{
+    ViewData["Title"] = "Register confirmation";
+}
+
+@section LoginShashin{
+   <section class="module bg-dark-30" style='background-image: url("/lib/assets/images/section-4.jpg");'>
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-6 col-sm-offset-3">
+                <h1 class="module-title font-alt mb-0">Register</h1>
+              </div>
+            </div>
+          </div>
+        </section>
+}
+
+<h1>@ViewData["Title"]</h1>
+@{
+    if (@Model.DisplayConfirmAccountLink)
+    {
+        //<p>
+        //    This app does not currently have a real email sender registered, see <a href="https:aka.ms/aspaccountconf">these docs</a> for how to configure a real email sender.
+        //    Normally this would be emailed: <a id="confirm-link" href="@Model.EmailConfirmationUrl">Click here to confirm your account</a>
+        //</p>
+
+        <div class="alert alert-info" role="alert">
+            <p>
+            <a id="confirm-link" href="@Model.EmailConfirmationUrl">
+                <strong>Attention!</strong> Click here to confirm your account!
+            </a>
+            </p>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-info" role="alert">
+           <p>
+                <strong>Please check your email to confirm your account.!</strong>
+            </p>
+        </div>
+        
+    }
+}
+

@@ -1,0 +1,52 @@
+﻿@model Sitting
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="row position-relative m-0">
+    <div class="row">
+        <div class="col-sm-12">
+            <h2 class="module-title font-alt align-left mb-30">Sitting Details</h2>
+            <div class="btn-list" style="display: flex;">
+                <div>
+                    <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-circle btn-danger">Delete</a>
+                </div>&nbsp
+                <div>
+                    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-circle btn-primary">Edit</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<hr class="divider-w mt-10 mb-20">
+
+<div class="row">
+    <div class="col-md-6 mb-30">
+        <h3>@Model.SittingType.Name - @Model.StartTime.ToString("dd/MM/yyyy") </h3>
+        <p>Start Time: @Model.StartTime </p>
+        <p>End Time: @Model.EndTime </p>
+        <p>Capacity: @Model.Capacity</p>
+        <p><span class="icon-strategy"></span> Vacancies:@Model.Vacancies  
+        </p>
+        <p>@(Model.Vacancies * 100 / Model.Capacity) %</p>
+       
+        <div class="progress">
+        <div class="progress-bar" aria-valuenow="@(Model.Vacancies * 100 / Model.Capacity)" role="progressbar" aria-valuemin="0" aria-valuemax="100"><span class="font-alt text-dark"></span></div>
+        </div>
+        <hr class="divider-b mt-10 mb-20">
+        <p>Active: @(Model.Active ? "Yes" : "No")</p>
+        <div>
+            Existing Reservation:
+            <div>
+            @foreach (var r in Model.Reservations)
+            {
+                <button class="btn btn-warning btn-round" type="button">
+                    <a href="~/Administration/Reservation/Details/@r.Id/"> @r.Id </a>
+                </button>
+            }
+            </div>
+        </div>
+        <hr class="divider-w mt-10 mb-20">
+
+    </div>
+</div>

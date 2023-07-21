@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Reservation>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="row">
+    <div class="col-sm-12">
+        <h2 class="module-title font-alt align-left">Admin Dashboard</h2>
+        <p class="module-subtitle font-serif align-left mb-30">Hello @User.Identity?.Name!</p>
+    </div>
+    <hr class="divider-w mt-10 mb-20">
+</div>
+
+<div class="row">
+    <div class="container col-sm-12 mt-0 mb-30 p-20" style="border: 1px dotted black; ">
+        <p><strong>Cuurent Time:</strong> @DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") </p>
+        <p>
+            <strong>Total:</strong> 
+            You have <a href="Administration/Reservation/Main"><u>@Model.Count()</u></a> appointments awaiting your attention.
+        </p>
+        <div class="alert alert-danger" role="alert">
+            <button class="close" type="button" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <i class="fa fa-cog fa-spin"></i>
+            <strong>Reservation for Today:</strong>  
+            <a href="Administration/Reservation/Main">
+       
+                <a href="Administration/Reservation/Main"><u>@ViewBag.TodayCount</u></a> appointments.
+        </div>
+        <div class="alert alert-warning" role="alert">
+            <button class="close" type="button" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <i class="fa fa-cutlery"></i>
+            <strong>Reservation for Tomorrow:</strong> 
+            <a href="Administration/Reservation/Main"><u> @ViewBag.TomorrowCount</u></a> appointments.
+        </div>
+        <div class="alert alert-info" role="alert">
+            <button class="close" type="button" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <i class="fa fa-diamond"></i>
+            <strong>Reservation in 7 days:</strong>
+            <a href="Administration/Reservation/Main"><u>@ViewBag.SevenDaysCount</u></a> appointments.
+        </div>
+    </div>
+</div>
+
+
+

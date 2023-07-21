@@ -1,0 +1,79 @@
+﻿@model IEnumerable<Reservation>
+
+@{
+    ViewData["Title"] = "History";
+}
+@section Shashin2{
+    <section class="module bg-dark-30" style="background-image: url('/lib/assets/images/section-4.jpg');">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-3">
+                    <h2 class="module-title font-alt mb-0">Member Home</h2>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+
+<section class="module mt-0 mb-0 pt-0">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4 col-md-3 sidebar">
+                <div class="widget">
+                    <form role="form">
+                        <div class="search-box">
+                            <input class="form-control" type="text" placeholder="Search..." />
+                            <button class="search-btn" type="submit"><i class="fa fa-search"></i></button>
+                        </div>
+                    </form>
+                </div>
+                <div class="widget">
+                    <h5 class="widget-title font-alt"><i class="icon icon-gears"></i>Dashboard</h5>
+                    <ul class="icon-list">
+                        <li><a href="~/Membership/Home/Index">Member Home <span class="fa fa-home"></span></a></li>
+                        <li><a href="~/Membership/reservation/history">  My Reservation History <span class="fa fa-heart"></span></a></li>
+                        <li><a href="~/Membership/reservation/sittings">  Make New Reservation <span class="fa fa-pencil-square-o"></span></a></li>
+                        <li><a href="~/Membership/Home/Promotion"> Member Promotion <span class="fa fa-hand-o-right"></span> </a></li>
+                        <li><a href="~/">  Contact Us <span class="fa fa-envelope-o"></span></a></li>
+                        <li><a href="~/Identity/Account/Manage">  Account Setting <span class="fa fa-wrench"></span></a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-sm-9">
+                <div class="row">
+                    <div class="col-sm-9 col-sm-offset-1">
+                        <h2 class="font-alt mt-0 mb-0">Reservation History</h2>
+                        <hr class="divider-w mt-10 mb-20">
+                        
+                        <div style="margin-top:30px; margin-bottom:100px;">
+                            <table id="t1" class="table table-striped" style="width:100%">
+                                <thead class="thead-dark">
+                                      <tr>
+                                        <th scope="col">Date</th>
+                                        <th scope="col">Start Time</th>
+                                         <th scope="col">Duration</th>
+                                        <th scope="col">Sitting Type</th>
+                                        <th scope="col">Guest</th>
+                                        <th scope="col">Status</th>
+                                      </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach(var r in Model){
+                                          <tr>
+                                             <td>@r.StartTime.ToString("dd-MM-yyyy")</td>
+                                            <td>@r.StartTime.ToString("hh:mm tt")</td>
+                                            <td>@r.Duration</td>
+                                            <td>@r.Sitting.SittingType.Name</td>
+                                            <td>@r.Guests</td>
+                                            <td>@r.Status.Name</td>
+                                          </tr>
+                                     }
+                                <tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+</section>

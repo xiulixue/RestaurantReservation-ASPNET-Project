@@ -1,0 +1,6 @@
+This favicon was generated using the following font:
+
+- Font Title: Gaegu
+- Font Author: Copyright 2018 The Gaegu Project Authors
+- Font Source: http://fonts.gstatic.com/s/gaegu/v15/TuGfUVB6Up9NU6ZLodgzydtk.ttf
+- Font License: SIL Open Font License, 1.1 (http://scripts.sil.org/OFL))

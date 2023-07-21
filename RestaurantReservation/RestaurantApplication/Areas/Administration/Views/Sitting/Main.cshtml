@@ -1,0 +1,131 @@
+﻿@model IEnumerable<Sitting>
+@{
+    ViewData["Title"] = "Main";
+}
+
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
+<link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.3.6/css/buttons.dataTables.min.css" />
+
+<div class="row position-relative m-0">
+    <div class="row">
+        <div class="col-sm-12">
+            <h2 class="module-title font-alt align-left mb-30">Manage Sittings</h2>
+            <div class="btn-list" style="display: flex;">
+                <div>
+                    <a href="~/Administration/Sitting/Create/" class="btn btn-primary btn-circle">Add New Sitting</a>
+                </div>&nbsp;
+                <div>
+                    <a href="~/Administration/Sittingtype/List/" class="btn btn-primary btn-circle">Manage Sitting Type</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<hr class="divider-w mt-10 mb-20">
+<div role="tabpanel">
+    <ul class="nav nav-tabs font-alt" role="tablist">
+        <li class="active"><a href="#support" data-toggle="tab"><span class="icon-tools-2"></span>By Calender</a></li>
+        <li><a href="#sales" data-toggle="tab"><span class="icon-tools-2"></span>By List</a></li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane active" id="support">
+            <div style="display:flex">
+                <div style="flex:1" id='calendar'></div>
+            </div>
+        </div>
+        <div class="tab-pane" id="sales">
+            <table id="example" class="display" style="width:100%">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Sitting Type</th>
+                        <th scope="col">Start time</th>
+                        <th scope="col">End time</th>
+                        <th scope="col">Capacity</th>
+                        <th scope="col">Vacancies</th>
+                        <th scope="col">Active</th>
+                        <th scope="col">Operation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var s in Model)
+                    {
+                        var color = (s.Vacancies >= s.Capacity / 3) ? "" : "Red";
+                        <tr style="background-color:@(s.Active? "":"Grey")">
+                            <th scope="row">@s.Id</th>
+                            <td>@s.StartTime.ToString("yyyy-MM-dd")</td>
+                            <td>@s.SittingType.Name</td>
+                            <td>@s.StartTime.ToString("hh:mm tt")</td>
+                            <td>@s.EndTime.ToString("hh:mm tt")</td>
+                            <td>@s.Capacity</td>
+                            <td style="background-color:@color">@s.Vacancies</td>
+                            <td>@(s.Active ? "Yes" : "No")</td>
+                            <td>
+                                <a asp-action="Delete" asp-route-id="@s.Id">Delete</a>  |
+                                <a asp-action="Details" asp-route-id="@s.Id">Details</a> |
+                                <a asp-action="Edit" asp-route-id="@s.Id">Edit</a> |
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.3.6/js/dataTables.buttons.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.html5.min.js"></script>
+<script>
+
+    $(document).ready(function () {
+        let table = new DataTable('#example');
+
+        $('#example').DataTable({
+            order: [[1, 'asc']],
+        });
+    });
+</script>
+<script src="~/lib/fullcalendar.min.js"></script>
+<script src="~/lib/main.min.js"></script>
+<script src="~/lib/calendar/index.global.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            //initialView: 'dayGridDay'
+            initialView: 'timeGridWeek',
+            //initialView: 'timeGridWeek',
+            editable: true,
+            //navLinks: true,
+            nowIndicator: true,
+
+            headerToolbar: {
+                left: "prev,next today",
+                center: "title",
+                right: "dayGridMonth,timeGridWeek,listWeek",
+            },
+
+            events: [
+    @foreach (var s in Model)
+    {
+        <text>
+                    {
+                        title: "@s.SittingType.Name",
+                        start: "@s.StartTime.ToString("yyyy-MM-ddTHH:mm:ss")",
+                        url: "/Administration/Sitting/Details/@s.Id"
+                    },
+        </text>
+    }
+                     ]
+
+
+
+        });
+        calendar.render();
+    });
+</script>

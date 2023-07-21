@@ -1,0 +1,103 @@
+﻿@model IEnumerable<Reservation>
+@{
+    ViewData["Title"] = "Member Page";
+}
+
+@section Shashin2{
+    <section class="module bg-dark-30" style="background-image: url('/lib/assets/images/section-4.jpg');">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-3">
+                    <h2 class="module-title font-alt mb-0">Member Home</h2>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+<section class="module mt-0 mb-0 pt-0">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4 col-md-3 sidebar">
+                <!-- Sidebar content -->
+                <div class="widget">
+                    <form role="form">
+                        <div class="search-box">
+                            <input class="form-control" type="text" placeholder="Search..." />
+                            <button class="search-btn" type="submit"><i class="fa fa-search"></i></button>
+                        </div>
+                    </form>
+                </div>
+                <div class="widget">
+                    <h5 class="widget-title font-alt"><i class="icon icon-gears"></i>Dashboard</h5>
+                    <ul class="icon-list">
+                        <li><a href="~/Membership/Home/Index">Member Home <span class="fa fa-home"></span></a></li>
+                        <li><a href="~/Membership/reservation/history">  My Reservation History <span class="fa fa-heart"></span></a></li>
+                        <li><a href="~/Membership/reservation/sittings">  Make New Reservation <span class="fa fa-pencil-square-o"></span></a></li>
+                        <li><a href="~/Membership/Home/Promotion"> Member Promotion <span class="fa fa-hand-o-right"></span> </a></li>
+                        <li><a href="~/Home/Contact">  Contact Us <span class="fa fa-envelope-o"></span></a></li>
+                        <li><a href="~/Identity/Account/Manage">  Account Setting <span class="fa fa-wrench"></span></a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-sm-8 col-md-9">
+                <div class="row">
+                    <div class="col-sm-9 col-sm-offset-1">
+                        <h2 class="font-alt mt-0 mb-0">Current reservation: </h2>
+                        <hr class="divider-w mt-10 mb-20">
+                        <div style="border: 1px dotted black; padding:15px; margin:5px">
+                            @foreach (var r in Model)
+                            {
+                                <ul>
+                                    <li>Date: @r.StartTime.ToString("dd-MM-yyyy")</li>
+                                    <li>Time: @r.Sitting.SittingType.Name @r.StartTime.ToString("hh:mm tt")</li>
+                                    <li>Duration: @r.Duration</li>
+                                    <li>Guest Number: @r.Guests</li>
+                                    <li>Status: @r.Status.Name</li>
+                                </ul>
+                            }
+                            <p style="color:red; font-weight:300">Note: If you want to make any change for your reservation, please contact Bean Scene.</p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-sm-9 col-sm-offset-1">
+                        <h2 class="font-alt mt-0 mb-0">Exclusive Special Offer: </h2>
+                        <hr class="divider-w mt-10 mb-20">
+                        <div class="col-sm">
+                            <h5>Offer 1: 50%</h5>
+                            <ul class="works-grid works-hover-w" id="works-grid">
+                                <li class="work-item illustration webdesign">
+                                    <a href="~/membership/reservation/sittings">
+                                        <div class="work-image"><img src="/lib/assets/images/restaurant/corn.jpg" alt="Portfolio Item" /></div>
+                                        <div class="work-caption font-alt">
+                                            <h3 class="work-title">Book Now</h3>
+                                            <div class="work-descr">Elevating Dining Experiences</div>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-sm">
+                            <h5>Offer 2: 30%</h5>
+                            <ul class="works-grid works-hover-w" id="works-grid">
+                                <li class="work-item marketing photography ">
+                                    <a href="~/Reservation/Menu">
+                                        <div class="work-image">
+                                            <img src="/lib/assets/images/restaurant/limes.jpg" alt="Portfolio Item" />
+                                        </div>
+                                        <div class="work-caption font-alt">
+                                            <h3 class="work-title">New Menu</h3>
+                                            <div class="work-descr">Taste the Difference</div>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,103 @@
+﻿@model IEnumerable<Restaurant>
+@{
+    ViewData["Title"] = "Restaurant";
+}
+
+@section LoginShashin{
+    <section class="module bg-dark-30" style='background-image: url("/lib/assets/images/section-4.jpg");'>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-3">
+                    <h1 class="module-title font-alt mb-0">Restaurant Location</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+<section style="margin-top: 100px; margin-bottom: 100px;" class="module pt-0 pb-0">
+    <div class="row position-relative mt-0 mb-0">
+        <div class="row">
+            <div class="col-sm-12">
+                <h2 class="module-title font-alt align-left">Our Restaurant</h2>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row multi-columns-row post-columns">
+            @foreach (var s in Model)
+            {
+                <div class="col-sm-12 col-md-6 col-lg-6 p-5">
+                    <div class="post">
+                        <div class="post-thumbnail">
+                            <a href="#">
+                                <img src="@Url.Content("~/lib/assets/images/restaurant/slider1.jpg")" alt="Restaurant Image" />
+                            </a>
+                        </div>
+                        <div class="post-header font-alt">
+                            <h2 class="post-title"><a href="#">@s.Name Restaurant</a></h2>
+                            <div class="post-meta">
+                                By&nbsp;<a href="#">Mark Stone</a>&nbsp;| 23 November | 3 Comments
+                            </div>
+                        </div>
+                        <div class="post-entry">
+                            <p>A wonderful restaurant which you enjoy feast with your lovely families.</p>
+                        </div>
+                        <div class="post-more">
+                            <a class="more-link" asp-area="" asp-controller="Reservation" asp-action="Sittings">Reservation Now!</a>
+                        </div>
+                    </div>
+                </div>
+            }
+            <div class="col-sm-12 col-md-6 col-lg-6 p-5">
+                <div class="post">
+                    <div class="post-thumbnail">
+                        <a href="#"><img src="@Url.Content("~/lib/assets/images/restaurant/slider2.jpg")" alt="Restaurant Image" /></a>
+                    </div>
+                    <div class="post-header font-alt">
+                        <h2 class="post-title"><a href="#">New Restaurant</a></h2>
+                        <div class="post-meta">
+                            By&nbsp;<a href="#">Andy River</a>&nbsp;| 11 November | 4 Comments
+                        </div>
+                    </div>
+                    <div class="post-entry">
+                        <p>Bean Scene New Restaurant is Coming Soon...</p>
+                    </div>
+                    <div class="post-more"><a class="more-link" href="#">Read more</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="map" style="width: 100%; height: 400px;"></div>
+</section>
+<script>
+    (g => { var h, a, k, p = "The Google Maps JavaScript API", c = "google", l = "importLibrary", q = "__ib__", m = document, b = window; b = b[c] || (b[c] = {}); var d = b.maps || (b.maps = {}), r = new Set, e = new URLSearchParams, u = () => h || (h = new Promise(async (f, n) => { await (a = m.createElement("script")); e.set("libraries", [...r] + ""); for (k in g) e.set(k.replace(/[A-Z]/g, t => "_" + t[0].toLowerCase()), g[k]); e.set("callback", c + ".maps." + q); a.src = `https://maps.${c}apis.com/maps/api/js?` + e; d[q] = f; a.onerror = () => h = n(Error(p + " could not load.")); a.nonce = m.querySelector("script[nonce]")?.nonce || ""; m.head.append(a) })); d[l] ? console.warn(p + " only loads once. Ignoring:", g) : d[l] = (f, ...n) => r.add(f) && u().then(() => d[l](f, ...n)) })
+        ({ key: "AIzaSyC_tln2gwb5Z4V61k5d1FpIvzHnwBd40fQ", v: "beta" });
+</script>
+
+<script>
+    let map;
+    async function initMap() {
+        // The location of Uluru
+        const position = { lat: -25.344, lng: 131.031 };
+        // Request needed libraries.
+        //ts-ignore
+        const { Map } = await google.maps.importLibrary("maps");
+        const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
+
+        // The map, centered at Uluru
+        map = new Map(document.getElementById("map"), {
+            zoom: 4,
+            center: position,
+            mapId: "DEMO_MAP_ID",
+        });
+
+        // The marker, positioned at Uluru
+        const marker = new AdvancedMarkerElement({
+            map: map,
+            position: position,
+            title: "Uluru",
+        });
+    }
+
+    initMap();
+</script>

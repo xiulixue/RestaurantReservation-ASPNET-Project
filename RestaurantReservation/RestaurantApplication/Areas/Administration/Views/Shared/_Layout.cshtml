@@ -1,0 +1,163 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>@ViewData["Title"] - Bean Scene Restaurant</title>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.3.6/css/buttons.dataTables.min.css" />
+
+
+    <link href="~/lib/assets/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Volkhov:400i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+    <link href="~/lib/assets/lib/animate.css/animate.css" rel="stylesheet">
+    <link href="~/lib/assets/lib/components-font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="~/lib/assets/lib/et-line-font/et-line-font.css" rel="stylesheet">
+    <link href="~/lib/assets/lib/flexslider/flexslider.css" rel="stylesheet">
+    <link href="~/lib/assets/lib/owl.carousel/dist/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="~/lib/assets/lib/owl.carousel/dist/assets/owl.theme.default.min.css" rel="stylesheet">
+    <link href="~/lib/assets/lib/magnific-popup/dist/magnific-popup.css" rel="stylesheet">
+    <link href="~/lib/assets/lib/simple-text-rotator/simpletextrotator.css" rel="stylesheet">
+    <link href="~/lib/assets/css/style.css" rel="stylesheet">
+    <link id="color-scheme" href="~/lib/assets/css/colors/default.css" rel="stylesheet" />
+
+
+    <link href="/css/styles.css" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="~/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="~/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="~/favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="~/favicon_io/site.webmanifest">
+</head>
+
+<body class=" sb-nav-fixed">
+    <nav class="font-alt sb-topnav navbar navbar-expand navbar-dark bg-dark">
+        <!-- Navbar Brand-->
+        <a class="navbar-brand ps-3" href="~/">Bean Scene </a>
+        <!-- Sidebar Toggle-->
+        <button class="btn btn-link btn-lg order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+        <!-- Navbar-->
+        <ul class="font-sans-serif navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="#!">Settings</a></li>
+                    <li><a class="dropdown-item" href="#!">Activity Log</a></li>
+                    <li><hr class="dropdown-divider" /></li>
+                    <li><a class="dropdown-item" href="#!">Logout</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_nav">
+            <nav class="font-sans-serif sb-sidenav accordion sb-sidenav-light" id="sidenavAccordion">
+                <div class="sb-sidenav-menu">
+                    <div class="nav">
+
+                        <div class="sb-sidenav-menu-heading">Core</div>
+                        <a class="nav-link text-dark" asp-area="Administration" asp-controller="Home" asp-action="Index">
+                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            Dashboard
+                        </a>
+
+                        <div class="sb-sidenav-menu-heading">Interface</div>
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                            Sitting Management
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+
+                                <a class="nav-link text-dark" asp-area="Administration" asp-controller="Sitting" asp-action="Main">View/Edit</a>
+                                <a class="nav-link" href="/Administration/Sitting/create"><i class="fas fa-plus-circle"></i>Add Sittings</a>
+                            </nav>
+                        </div>
+
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                            <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                            Reservation Management
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" asp-area="Administration" asp-controller="Reservation" asp-action="Main">View/Edit</a>
+                                <a class="nav-link" href="/Membership/Reservation/Sittings"><i class="fas fa-plus-circle"></i> Make New Reservation</a>
+                            </nav>
+                        </div>
+
+                        <div class="sb-sidenav-menu-heading">Add on</div>
+                        <a class="nav-link text-dark" asp-area="Administration" asp-controller="Staff" asp-action="Index">
+                            <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
+                            Staff
+                        </a>
+                        <a class="nav-link text-dark" asp-area="Administration" asp-controller="Viewreport" asp-action="Index">
+                            <div class="sb-nav-link-icon"><i class="fas fa-bar-chart"></i></div>
+                            View Report
+                        </a>
+                    </div>
+                </div>
+                <div class="sb-sidenav-footer">
+                    <div class="small">Logged in as:</div>
+                    <div class="text-dark">
+                        <partial name="_LoginPartial" />
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div id="layoutSidenav_content">
+
+            <main role="main" class="pb-3">
+                @RenderSection("Shashin1",required:false)
+                <div class="container">
+                    @RenderBody()
+                </div>
+            </main>
+
+            <footer class="py-4 bg-light mt-auto fixed-bottom">
+                <div class="container-fluid px-4">
+                    <div class="d-flex align-items-center justify-content-between small">
+                        <div class="text-muted">Copyright &copy; Your Website 2023</div>
+                        <div>
+                            <a href="#">Privacy Policy</a>
+                            &middot;
+                            <a href="#">Terms &amp; Conditions</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="/js/scripts.js"></script>
+    <script src="~/lib/assets/js/plugins.js"></script>
+    <script src="~/lib/assets/js/main.js"></script>
+    <script src="~/lib/assets/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/assets/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <script src="~/lib/assets/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/assets/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="~/lib/assets/lib/wow/dist/wow.js"></script>
+    <script src="~/lib/assets/lib/jquery.mb.ytplayer/dist/jquery.mb.YTPlayer.js"></script>
+    <script src="~/lib/assets/lib/isotope/dist/isotope.pkgd.js"></script>
+    <script src="~/lib/assets/lib/imagesloaded/imagesloaded.pkgd.js"></script>
+    <script src="~/lib/assets/lib/flexslider/jquery.flexslider.js"></script>
+    <script src="~/lib/assets/lib/owl.carousel/dist/owl.carousel.min.js"></script>
+    <script src="~/lib/assets/lib/smoothscroll.js"></script>
+    <script src="~/lib/assets/lib/magnific-popup/dist/jquery.magnific-popup.js"></script>
+    <script src="~/lib/assets/lib/simple-text-rotator/jquery.simple-text-rotator.min.js"></script>
+    <script async="" defer="" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDK2Axt8xiFYMBMDwwG1XzBQvEbYpzCvFU"></script>
+    <script src="~/lib/assets/js/plugins.js"></script>
+    <script src="~/lib/assets/js/main.js"></script>
+
+</body>
+@await RenderSectionAsync("Scripts", required: false)
+
+</html>

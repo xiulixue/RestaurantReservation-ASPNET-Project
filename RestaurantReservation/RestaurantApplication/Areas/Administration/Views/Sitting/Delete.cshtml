@@ -1,0 +1,48 @@
+﻿@model Sitting
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div class="row position-relative m-0">
+    <div class="row">
+        <div class="col-sm-12">
+            <h2 class="module-title font-alt align-left">Manager Sitting</h2>
+            <h5 class="module-subtitle align-left mb-10">Delete Sitting</h5>
+        </div>
+    </div>
+</div>
+<hr class="divider-w mt-10 mb-20">
+<div class="row">
+    <div class="p-10 mb-30">
+        @if (Model?.Reservations.Count > 0)
+        {
+            <h4 class="text-danger">
+                "Sorry the sitting can't be deleted as it has one or more reservations!"
+            </h4>
+        }
+        else
+        {
+            <h4 class="text-danger">Are you sure to delete this sitting:</h4>
+        }
+        <div style="background-color: yellow; padding:5px; margin:5px">
+            <p>Sitting Type: @Model.SittingType.Name </p>
+            <p>Sitting Date: @Model.StartTime.ToString("dd/MM/yyyy") </p>
+            <p>Time: @Model.StartTime.ToString("hh:mm tt") - @Model.EndTime.ToString("hh:mm tt")  </p>
+            <p>Capacity: @Model.Capacity </p>
+            <p>Vacancies: @Model.Vacancies</p>
+            <p>Active: @Model.Active </p>
+        </div>
+
+        <form asp-area="Administration" asp-controller="Sitting" asp-action="Delete">
+            <input type="hidden" asp-for="Id" />
+            <button 
+                class="btn btn-circle btn-danger"
+                type="submit" 
+                disabled="@(Model.Reservations.Count > 0)"
+            >
+                Confirm to Delete
+            </button>
+        </form>
+    </div>
+</div>
+

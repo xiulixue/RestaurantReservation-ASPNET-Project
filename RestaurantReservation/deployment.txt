@@ -1,0 +1,12 @@
+Azura SQL:
+admin account: IronGirls-PetershamTAFE
+password: 2023SydneyNSW
+server name: reservation-database-server.database.windows.net
+Web name: iron-girl.azurewebsites.net
+Ipv4: 210.50.182.166
+
+SQL authentication:
+SQL Server connect name£ºreservation-database-server.database.windows.net,1433 
+
+Server=tcp:reservation-database-server.database.windows.net,1433;Initial Catalog=MyRestaurantDemoDb;Persist Security Info=False;User ID=IronGirls-PetershamTAFE;Password=2023SydneyNSW;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
+

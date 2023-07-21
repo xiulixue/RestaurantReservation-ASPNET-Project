@@ -1,0 +1,69 @@
+﻿@model Sitting
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="row position-relative m-0">
+    <div class="row">
+        <div class="col-sm-12">
+            <h2 class="module-title font-alt align-left">Manage Sitting</h2>
+            <h5 class="module-subtitle align-left mb-10">Edit Sitting</h5>
+        </div>
+    </div>
+</div>
+<hr class="divider-w mt-10 mb-20">
+<div class="row">
+    <div class="col-md-6 mb-30">
+        <h2>Sitting Id: @Model.Id - @Model.SittingType.Name</h2>
+
+        @if (Model?.Reservations.Count > 0)
+        {
+            <p class="text-danger">
+                "Sorry the sitting can't be modified as it has one or more reservations!"
+            </p>
+        }
+
+        <form asp-controller="Sitting" asp-action="Edit">
+
+            <div class="form-group">
+                <label>Start Time: </label>
+                <input asp-for="StartTime"
+                       disabled="@(Model.Reservations.Count > 0)"
+                       class="form-control" />
+                <span asp-validation-for="StartTime" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label>End Time: </label>
+                <input asp-for="EndTime"
+                       disabled="@(Model.Reservations.Count > 0)"
+                       class="form-control" />
+                <span asp-validation-for="EndTime" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label>Capacity: </label>
+                <input asp-for="Capacity"
+                       disabled="@(Model.Reservations.Count > 0)"
+                       class="form-control" />
+                <span asp-validation-for="Capacity" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label>Vacancies: </label>
+                <input asp-for="Vacancies"
+                       disabled
+                       class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label>Active: </label>
+                <input asp-for="Active" disabled="@(Model.Reservations.Count > 0)" />
+                <span asp-validation-for="Active" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-circle btn-primary" disabled="@(Model.Reservations.Count > 0)">Save</button>
+        </form>
+    </div>
+</div>
+

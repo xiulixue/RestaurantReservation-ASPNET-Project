@@ -1,0 +1,78 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup Label="Globals">
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>aspnet-RestaurantApplication-ba74c7b1-41ea-4e83-b104-a5a7e7492f32</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\js\selectsitting.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="wwwroot\js\selectsitting.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.13" />
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="6.0.13" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.16" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.16" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.16" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.16">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.13" />
+    <PackageReference Include="MongoDB.Driver" Version="2.19.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Controllers\Api\" />
+    <Folder Include="Data\Migrations\" />
+    <Folder Include="wwwroot\lib\assets\lib\owl.carousel\docs\assets\css\" />
+    <Folder Include="wwwroot\lib\assets\lib\owl.carousel\docs\assets\img\" />
+    <Folder Include="wwwroot\lib\assets\lib\owl.carousel\docs\assets\js\" />
+    <Folder Include="wwwroot\lib\assets\lib\owl.carousel\docs\assets\owlcarousel\assets\" />
+    <Folder Include="wwwroot\lib\assets\lib\owl.carousel\docs\assets\vendors\" />
+    <Folder Include="wwwroot\lib\assets\lib\owl.carousel\docs\demos\" />
+    <Folder Include="wwwroot\lib\assets\lib\owl.carousel\docs\docs\" />
+    <Folder Include="wwwroot\lib\assets\lib\owl.carousel\docs_src\assets\css\" />
+    <Folder Include="wwwroot\lib\assets\lib\owl.carousel\docs_src\assets\img\" />
+    <Folder Include="wwwroot\lib\assets\lib\owl.carousel\docs_src\assets\js\" />
+    <Folder Include="wwwroot\lib\assets\lib\owl.carousel\docs_src\assets\scss\" />
+    <Folder Include="wwwroot\lib\assets\lib\owl.carousel\docs_src\assets\vendors\" />
+    <Folder Include="wwwroot\lib\assets\lib\owl.carousel\docs_src\data\" />
+    <Folder Include="wwwroot\lib\assets\lib\owl.carousel\docs_src\helpers\" />
+    <Folder Include="wwwroot\lib\assets\lib\owl.carousel\docs_src\templates\layouts\" />
+    <Folder Include="wwwroot\lib\assets\lib\owl.carousel\docs_src\templates\pages\demos\" />
+    <Folder Include="wwwroot\lib\assets\lib\owl.carousel\docs_src\templates\pages\docs\" />
+    <Folder Include="wwwroot\lib\assets\lib\owl.carousel\docs_src\templates\partials\" />
+    <Folder Include="wwwroot\lib\assets\lib\owl.carousel\src\img\" />
+    <Folder Include="wwwroot\lib\assets\lib\owl.carousel\src\js\" />
+    <Folder Include="wwwroot\lib\assets\lib\owl.carousel\src\scss\" />
+    <Folder Include="wwwroot\lib\assets\lib\owl.carousel\test\unit\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\favicon_io\site.webmanifest" />
+    <None Include="wwwroot\js\selectsitting.js" />
+    <None Include="wwwroot\lib\startbootstrap-sb-admin-gh-pages\assets\demo\chart-area-demo.js" />
+    <None Include="wwwroot\lib\startbootstrap-sb-admin-gh-pages\assets\demo\chart-bar-demo.js" />
+    <None Include="wwwroot\lib\startbootstrap-sb-admin-gh-pages\assets\demo\chart-pie-demo.js" />
+    <None Include="wwwroot\lib\startbootstrap-sb-admin-gh-pages\assets\demo\datatables-demo.js" />
+    <None Include="wwwroot\lib\startbootstrap-sb-admin-gh-pages\assets\img\error-404-monochrome.svg" />
+    <None Include="wwwroot\lib\startbootstrap-sb-admin-gh-pages\js\datatables-simple-demo.js" />
+    <None Include="wwwroot\lib\startbootstrap-sb-admin-gh-pages\js\scripts.js" />
+  </ItemGroup>
+
+</Project>

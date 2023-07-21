@@ -1,0 +1,17 @@
+﻿@model SittingType
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1><a href="~/Administration/Sittingtype/List/">SittingType</a> - Delete</h1>
+<div style="border: 1px solid black; padding:15px; margin:5px">
+    <h2>Are you sure to delete this sitting type:</h2>
+    <p>- @Model.Name ?</p>
+
+    <form asp-area="administration" asp-controller="Sittingtype" asp-action="Delete">
+        <input type="hidden" asp-for="Id"/>
+        <input type="submit" value="Delete"/>
+    </form>
+
+</div>
+

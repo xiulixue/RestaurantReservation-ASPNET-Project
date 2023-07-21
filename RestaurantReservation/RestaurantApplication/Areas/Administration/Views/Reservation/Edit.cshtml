@@ -1,0 +1,116 @@
+﻿@model Reservation
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="row position-relative m-0">
+    <div class="row">
+        <div class="col-sm-12">
+            <h2 class="module-title font-alt align-left">Manage Reservation</h2>
+            <h5 class="module-subtitle align-left mb-10">Edit Reservation</h5>
+        </div>
+    </div>
+</div>
+<hr class="divider-w mt-10 mb-20">
+<div class="row">
+    <div class="col-md-8 p-20 mb-30">
+        <form asp-area="Administration" asp-controller="Reservation" asp-action="Edit">
+
+            <div class="form-group">
+                <label>Sitting: </label>
+                <input value="@Model.Sitting.SittingType.Name" class="form-control" disabled />
+            </div>
+
+            <div class="form-group">
+                <label>Number of Guest: </label>
+                <input asp-for="Guests" class="form-control" />
+                <span asp-validation-for="Guests" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label>Reservation DateTime: </label>
+                <input asp-for="StartTime" class="form-control" min="@Model.Sitting.StartTime.ToString("yyyy-MM-ddTHH:mm")" max="@Model.Sitting.EndTime.ToString("yyyy-MM-ddTHH:mm")" />
+                <span asp-validation-for="StartTime" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label>Duration (mins): </label>
+                <select asp-for="Duration" class="form-control">
+                    <option value="30">30 mins</option>
+                    <option value="45">45 mins</option>
+                    <option value="60">60 mins</option>
+                    <option value="75">1 hr 15 mins</option>
+                    <option value="90">1 hr 30 mins</option>
+                    <option value="105">1 hr 45 mins</option>
+                    <option value="120">2 hrs</option>
+                </select>
+                <span asp-validation-for="Duration" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label>Notes: </label>
+                <input asp-for="Notes" class="form-control" />
+                <span asp-validation-for="Notes" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label>Status: </label>
+                @Html.DropDownListFor(
+                m=>m.Status.Id,
+                ViewBag.Statuses as SelectList,
+                "-- Select Status --",
+                new { @class = "form-control", id="StatusId"}
+                )
+                <span asp-validation-for="Status.Id" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label>Source: </label>
+                @Html.DropDownListFor(
+                m=>m.Source.Id,
+                ViewBag.Sources as SelectList,
+                "-- Select Source --",
+                new { @class = "form-control", id="SourcesId"}
+                )
+                <span asp-validation-for="Source.Id" class="text-danger"></span>
+            </div>
+            <button class="btn btn-circle btn-primary" type="submit">Submit</button>
+        </form>
+        <br />
+        <div class="form-group">
+            <label>Reserverd tables: </label>
+            <ul>
+            @foreach (var t in Model.ReservedTables)
+            {
+                <li>@t.Tables.Number</li>
+            }
+            </ul>
+        </div>
+            <br />
+        <button class="btn btn-circle btn-danger margintop-10px" id="remove-tables-btn" type="button">Remove Reserved Tables</button>
+        
+    </div>
+
+        
+</div>
+
+<script>
+    // Attach a click event listener to the button
+    document.getElementById("remove-tables-btn").addEventListener("click", function () {
+        // Make an AJAX call to the server
+        var reservationId = @Model.Id;
+        var url = "/Administration/Reservation/RemoveReservedTables?reservationId=" + reservationId;
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", url);
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+                // Success: reload the page
+                window.location.reload();
+            } else {
+                // Error: display an error message
+                alert("Error: " + xhr.statusText);
+            }
+        };
+        xhr.send();
+    });
+</script>

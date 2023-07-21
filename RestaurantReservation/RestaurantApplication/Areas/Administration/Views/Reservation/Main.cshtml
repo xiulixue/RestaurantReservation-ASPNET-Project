@@ -1,0 +1,104 @@
+﻿@model IEnumerable<Reservation>
+@{
+    ViewData["Title"] = "Main";
+}
+
+<div class="row position-relative m-0">
+    <div class="row">
+        <div class="col-sm-12">
+            <h2 class="module-title font-alt align-left mb-30">Manage Reservation</h2>
+            <a href="~/Membership/Reservation/Sittings" class="btn btn-circle btn-primary">Add New Reservation</a>
+        </div>
+    </div>
+</div>
+<hr class="divider-w mt-10 mb-20">
+
+<div class="row">
+    <table id="ReservationTable" class="display">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Date</th>
+                <th scope="col">Sitting Type</th>
+                <th scope="col">Name</th>
+                <th scope="col">Number of guest</th>
+                <th scope="col">Start Time</th>
+                <th scope="col">Duration</th>
+                <th scope="col">Status</th>
+                <th scope="col">Operation</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var r in Model)
+            {
+                <tr>
+                    <td scope="row">@r.Id</td>
+                    <td>@r.StartTime.ToString("dd/MM/yyyy/")</td>
+                    <td>@r.Sitting.SittingType.Name</td>
+                    <td>@r.Person.FirstName @r.Person.LastName</td>
+                    <td>@r.Guests</td>
+                    <td>@r.StartTime.ToString("hh:mm tt")</td>
+                    <td>@r.Duration mins</td>
+                    <td>@r.Status.Name</td>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@r.Id">Details</a> |
+                        <a asp-action="Edit" asp-route-id="@r.Id">Edit</a> |
+                        <a asp-action="Assign" asp-route-id="@r.Id">Assign Table</a> |
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@section Scripts{
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.3.6/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.print.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            var printCounter = 0;
+            //let table = new DataTable('#ReservationTable');
+
+            // Append a caption to the table before the DataTables initialisation
+            $('#ReservationTable').append('<caption style="caption-side: bottom">Reservation Table</caption>');
+
+            $('#ReservationTable').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy',
+                    {
+                        extend: 'excel',
+                        messageTop: 'The information in this table is copyright to Bean Scene.'
+                    },
+                    {
+                        extend: 'pdf',
+                        messageBottom: null
+                    },
+                    {
+                        extend: 'print',
+                        messageTop: function () {
+                            printCounter++;
+
+                            if (printCounter === 1) {
+                                return 'This is the first time you have printed this document.';
+                            }
+                            else {
+                                return 'You have printed this document ' + printCounter + ' times';
+                            }
+                        },
+                        messageBottom: null
+                    }
+                ]
+            });
+        });
+    </script>
+}
+

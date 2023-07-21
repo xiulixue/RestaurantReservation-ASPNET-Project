@@ -1,0 +1,52 @@
+﻿@model Reservation
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div class="row position-relative m-0">
+    <div class="row">
+        <div class="col-sm-12">
+            <h2 class="module-title font-alt align-left">Reservation Details</h2>
+            <h5 class="module-subtitle align-left mb-10">Delete Reservation</h5>
+        </div>
+    </div>
+</div>
+<hr class="divider-w mt-10 mb-20">
+<div class="row mb-30">
+    <h2>Are you sure to delete this reservation:</h2>
+    <div class="row" style="background-color: yellow; margin:5px; padding:15px">
+        <h3>Reservation details:</h3>
+        <div class="col-md-6 p-5 mb-30">
+            <p>Sitting Type: @Model.Sitting.SittingType.Name </p>
+            <p>Number of guest: @Model.Guests </p>
+            <p>Date: @Model.StartTime.ToString("dd/MM/yyyy/")</p>
+            <p>Start Time: @Model.StartTime.ToString("hh:mm tt")</p>
+            <p>Duration: @Model.Duration mins</p>
+            <p>Status: @Model.Status.Name</p>
+            <p>Source: @Model.Source.Name</p>
+            <ul>Assigned Tables:
+                
+                @foreach (var t in Model.ReservedTables)
+                {
+                    <li>@t.Tables.Number</li>
+                }
+                @*No assign table now. <a asp-action="Assign" asp-route-id="@Model.Id">Assign Table</a>*@
+
+            </ul>
+        </div>
+        <div class="col-md-6 p-5 mb-30">
+            <h4>Customer details:</h4>
+            <p>First Name: @Model.Person.FirstName </p>
+            <p>Last Name: @Model.Person.LastName </p>
+            <p>Email: @Model.Person.Email </p>
+            <p>Phone Number: @Model.Person.PhoneNumber </p>
+        </div>
+    </div>
+
+    <div>
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="Id" />
+            <button type="submit" class="btn btn-circle btn-primary">Confirm to Delete</button>
+        </form>
+    </div>
+</div>
