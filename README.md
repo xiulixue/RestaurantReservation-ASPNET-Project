@@ -2,9 +2,11 @@
 
 #### Project Topic
 
-Restaurant Reservation Booking and Management system with an Odering Mobile App.
+Restaurant Reservation Booking & Management System with an Odering Mobile App.
 
-This Ordering App is a group project about restaurant ordering. Based on React Native platform, design and develop functions of menu view, management and food ordering using the latest React library and RESTful Api to interact data with MongoBD.
+The Reservation Management System is based on ASP.NET core, which build full stack web apps with HTML, CSS, JavaScript, and C#. THis website serves users and restaurant management. Allow users to create accounts and book reservations. Restaurant staff to manage sittings and users' reservation.
+
+This Ordering App is based on React Native platform, design and develop functions of menu view, management and food ordering using the latest React library and RESTful Api to interact data with MongoBD.
 
 #### Group member
 
@@ -69,5 +71,6 @@ You need to run the Restaurant Reservation as back-end server then run the Order
 
 ## Thanks & Contact
 
-If you like this website don't forget give it a ⭐ and also feel free to share feedback with me. 
-Contact me => [Email](mailto:xuemurphy@gmail.com) [Linkedin](https://www.linkedin.com/in/xiuli-xue) [Github](https://github.com/xiulixue)
+If you like this website don't forget give it a ⭐ and also feel free to share feedback with me.
+
+#### Contact me => [Email](mailto:xuemurphy@gmail.com) [Linkedin](https://www.linkedin.com/in/xiuli-xue) [Github](https://github.com/xiulixue)
