@@ -22,6 +22,9 @@ This Ordering App is a group project about restaurant ordering. Based on React N
 #### Ordering App
 ![preview](https://github.com/xiulixue/xiulixue-website/assets/106227623/7297a601-ccde-4cca-9677-4ee9f7548723)
 
+#### Video
+Click [here to visit project present video.](https://youtu.be/iWkR1HJUxc8![image](https://github.com/xiulixue/RestaurantReservation-ASPNET-Project/assets/106227623/c3dcc1a6-4208-4233-afd0-8d2b3f5f3a9c))
+
 ## Requirements
 
 #### Front End
