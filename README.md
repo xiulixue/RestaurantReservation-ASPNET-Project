@@ -4,7 +4,7 @@
 
 Restaurant Reservation Booking & Management System with an Odering Mobile App.
 
-The Reservation Management System is based on ASP.NET core, which build full stack web apps with HTML, CSS, JavaScript, and C#. THis website serves users and restaurant management. Allow users to create accounts and book reservations. Restaurant staff to manage sittings and users' reservation.
+The Reservation Management System is based on ASP.NET core, which build full stack web apps with HTML, CSS, JavaScript, and C#. THis website serves users and restaurant management. Allow users to create accounts and book reservations. Allow Restaurant staff to manage sittings and users' reservation.
 
 This Ordering App is based on React Native platform, design and develop functions of menu view, management and food ordering using the latest React library and RESTful Api to interact data with MongoBD.
 
@@ -76,4 +76,4 @@ You need to run the Restaurant Reservation as back-end server then run the Order
 
 If you like this website don't forget give it a ⭐ and also feel free to share feedback with me.
 
-#### Contact me => [Email](mailto:xuemurphy@gmail.com) [Linkedin](https://www.linkedin.com/in/xiuli-xue) [Github](https://github.com/xiulixue)
+#### Contact me => [Email](mailto:xuemurphy@gmail.com) [LinkedIn](https://www.linkedin.com/in/xiuli-xue) [GitHub](https://github.com/xiulixue)
