@@ -2,7 +2,7 @@
 
 #### Project Topic
 
-Restaurant Reservation Booking & Management System with an Odering Mobile App.
+Restaurant Reservation Booking & Management System with an Ordering Mobile App.
 
 The Reservation Management System is based on ASP.NET core, which build full stack web apps with HTML, CSS, JavaScript, and C#. THis website serves users and restaurant management. Allow users to create accounts and book reservations. Allow Restaurant staff to manage sittings and users' reservation.
 
