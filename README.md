@@ -12,7 +12,7 @@ This Ordering App is based on React Native platform, design and develop function
 
 | Name          | Role                               |
 | ------------  | ---------------------------------- |
-| Xiuli Xue     | Full-Stack Developer & Scrum Master|
+| Xiuli Murphy Xue     | Full-Stack Developer & Scrum Master|
 | Jianna Huang  | Full-Stack Developer               |
 | Shiho Makino  | Front-end Developer                |
 
